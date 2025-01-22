@@ -1,6 +1,7 @@
 package com.dlog.DLog.diary;
 
 import com.dlog.DLog.comment.Comment;
+import com.dlog.DLog.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,4 +28,7 @@ public class Diary {
 
     @OneToMany(mappedBy = "diary", cascade = CascadeType.REMOVE)
     private List<Comment> commentList;
+
+    @ManyToOne
+    private SiteUser author;
 }

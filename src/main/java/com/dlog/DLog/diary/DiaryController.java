@@ -1,5 +1,6 @@
 package com.dlog.DLog.diary;
 
+import com.dlog.DLog.comment.CommentForm;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -31,7 +32,7 @@ public class DiaryController {
     }
 
     @GetMapping("/diary/detail/{id}")
-    public String detail(Model model, @PathVariable("id") Long id) {
+    public String detail(Model model, @PathVariable("id") Long id, CommentForm commentForm) {
         Diary diary = this.diaryService.getDiary(id);
         model.addAttribute("diary", diary);
         return "diary/detail";

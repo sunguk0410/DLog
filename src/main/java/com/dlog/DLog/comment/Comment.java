@@ -1,6 +1,7 @@
 package com.dlog.DLog.comment;
 
 import com.dlog.DLog.diary.Diary;
+import com.dlog.DLog.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,4 +24,7 @@ public class Comment {
 
     @ManyToOne
     private Diary diary;
+
+    @ManyToOne
+    private SiteUser author;
 }

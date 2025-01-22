@@ -41,6 +41,20 @@
             color: #555;
         }
 
+        .alert {
+        padding: 10px 15px;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        font-size: 14px;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #842029;
+            border: 1px solid #f5c2c7;
+        }
+
+
         ul {
             list-style: none;
             padding: 0;
@@ -108,7 +122,10 @@
     </ul>
 
     <!-- 댓글 입력 폼 -->
-    <form class="comment-form" th:action="@{|/comment/create/${diary.id}|}" method="post">
+    <form class="comment-form" th:action="@{|/comment/create/${diary.id}|}" th:object="${commentForm}" method="post">
+        <div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
+            <div th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+        </div>
         <textarea name="content" id="content" rows="6" placeholder="댓글을 입력하세요"></textarea>
         <input type="submit" value="답변 등록">
     </form>
